@@ -39,7 +39,7 @@ function App() {
       <Router>
         <Navbar title="TextUtils" abouttext="About" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
-        <div className='bgImage'>
+        <div className="bgImage">
         <div className=" container " >
               
               <Routes>
