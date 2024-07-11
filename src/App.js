@@ -1,8 +1,8 @@
+import React, { useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Textform from './components/Textform';
-import React, { useState } from 'react';
 import Alert from './components/Alert';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ function App() {
   const showAlert = (message, type) => {
     setAlert({
       msg: message,
-      type: type  
+      type: type
     });
     setTimeout(() => {
       setAlert(null);
@@ -39,13 +39,20 @@ function App() {
       <Router>
         <Navbar title="TextUtils" abouttext="About" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
-        <div className="container my-4">
-          <Routes>
-            <Route exact path="/about" element={<About />} />
-            <Route exact path="/" element={<Textform heading="Enter the text to analyze below" mode={mode} alert={alert} />} />
-          </Routes>
-        </div>
-      </Router>
+        <div className='bgImage'>
+        <div className=" container " >
+              
+              <Routes>
+                <Route exact path="/about" element={<About />} />
+                <Route exact path="/" element={<Textform heading="Enter the text to analyze below" mode={mode} showAlert={showAlert} />} />
+              </Routes>
+            </div>
+
+            </div>
+          </Router>
+
+    
+       
     </>
   );
 }

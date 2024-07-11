@@ -1,103 +1,110 @@
-import React, {useState} from 'react'
-
+import React, { useState } from 'react';
+import '../App.css';
 
 export default function Textform(props) {
+  const [text, setText] = useState('');
+  const [findText, setFindText] = useState('');
+  const [replaceText, setReplaceText] = useState('');
 
-    const [text,setText] = useState('');
-   // const [extractedNumbers, setExtractedNumbers] = useState([]);
+  const handleReplace = () => {
+    const newText = text.replaceAll(findText, replaceText);
+    setText(newText);
+    props.showAlert('Text replaced secondaryfully', 'secondary');
+  };
 
+  const handleUpperClick = () => {
+    let newText = text.toUpperCase();
+    setText(newText);
+    props.showAlert('Converted to Uppercase', 'secondary');
+  };
 
-    
-    const handleUpperClick=()=>{
-        console.log("uppercase button clicked");
-        // setText('You have clicked on handleUpperClick' + text);
-        let newtext = text.toUpperCase();
-        setText(newtext);
+  const handleLowerClick = () => {
+    let newText = text.toLowerCase();
+    setText(newText);
+    props.showAlert('Converted to Lowercase', 'secondary');
+  };
 
+  const handleOnChange = (event) => {
+    setText(event.target.value);
+  };
 
+  const handleClearClick = () => {
+    setText('');
+    props.showAlert('Text cleared', 'secondary');
+  };
 
-    }
-    const handleLowerClick=()=>{
-        console.log("lowercase button clicked");
-        // setText('You have clicked on handleUpperClick' + text);
-        let newtext = text.toLowerCase();
-        setText(newtext);
+  const handleCopyClick = () => {
+    navigator.clipboard.writeText(text);
+    props.showAlert('Text copied to clipboard', 'secondary');
+  };
 
+  const handleSpaceClick = () => {
+    let newText = text.split(/\s+/).join(' ');
+    setText(newText);
+    props.showAlert('Extra spaces removed', 'secondary');
+  };
 
-    }
-    const handleOnChange=(event)=>{
-        console.log("on change");
-        setText(event.target.value);
-    }
-    const handleclearClick=(event)=>{
-        console.log("Clear button clicked ");
-        let clr = " "
-        setText(clr)  
-  }
-  const handlecopyClick=(e)=>{
-    console.log('I am copied');
-    let copytext=document.getElementById('myBox');
-    copytext.select();
-    navigator.clipboard.writeText(copytext.value);
-  }
-    
-  const handlespaceClick=(e)=>{
-  console.log('Extra spaces removed');
-      let newtext =text.split(/[ ]+/);
-       setText(newtext.join(" "));
-  }
-
-  const handleextractnumbersClick=(e)=>{
+  const handleExtractNumbersClick = () => {
     let numbers = text.match(/\d+/g);
     if (numbers) {
-        numbers = numbers.map(Number);
-         setText(numbers.join(', ')); 
-        console.log('Extracted numbers:', numbers);
-        
+      numbers = numbers.map(Number);
+      setText(numbers.join(', '));
+      props.showAlert('Numbers extracted', 'secondary');
     } else {
-        console.log('No numbers found in the input text.');
+      props.showAlert('No numbers found', 'info');
     }
-  }
-  
-      //text ='new text ' //wrong way to change text
-    //setText('new text') //correct way to change text
-    // setText('Enter text here..')
+  };
 
-  
-
-  return ( 
-  
-
+  return (
     <>
-    <div className='container'  style={{color:props.mode==='dark'?'white':'black' }}>
+      <div className='container' style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
         <h2>{props.heading}</h2>
-  
-       <div className="mb-3">
-      
-      <textarea className="form-control"  value ={text} onChange={handleOnChange} style={{backgroundColor:props.mode==='dark'?'grey':'white',color:props.mode==='dark'?'white':'black' }} id="myBox" rows="9"></textarea>
+        <div className="mb-3">
+          <textarea
+            className="form-control"
+            value={text}
+            onChange={handleOnChange}
+            style={{ backgroundColor: props.mode === 'dark' ? 'grey' : 'white', color: props.mode === 'dark' ? 'white' : 'black' }}
+            id="myBox"
+            rows="9"
+          ></textarea>
+        </div>
+        <button className="btn btn-secondary mx-2 btnCuston" onClick={handleUpperClick}>Convert to Uppercase</button>
+        <button className="btn btn-secondary" onClick={handleLowerClick}>Convert to Lowercase</button>
+        <button className="btn btn-secondary mx-2" onClick={handleClearClick}>Clear text</button>
+        <button className="btn btn-secondary" onClick={handleCopyClick}>Copy text</button>
+        <button className="btn btn-secondary mx-2" onClick={handleSpaceClick}>Remove Extra Spaces</button>
+        <button className="btn btn-secondary mx-2" onClick={handleExtractNumbersClick}>Extract Numbers</button>
 
-       </div>
-       <button className="btn btn-success mx-2" onClick={handleUpperClick}>Convert to Uppercase</button>
-       <button className="btn btn-success "  onClick={handleLowerClick}>Convert to Lowercase</button>
-       <button className="btn btn-success mx-2"  onClick={handleclearClick}>Clear text</button>
-       <button className="btn btn-success"  onClick={handlecopyClick}>Copy text</button>
-       <button className="btn btn-success mx-2"  onClick={handlespaceClick}>Remove Extra Spaces</button>
-       <button className="btn btn-success mx-2"  onClick={handleextractnumbersClick}>Extract Numbers</button>
+        {/* Find and Replace Section */}
+        <div className="my-3">
+          <input
+            type="text"
+            className="form-control my-1"
+            placeholder="Find text"
+            value={findText}
+            onChange={(e) => setFindText(e.target.value)}
+            style={{ backgroundColor: props.mode === 'dark' ? 'grey' : 'white', color: props.mode === 'dark' ? 'white' : 'black' }}
+          />
+          <input
+            type="text"
+            className="form-control my-1"
+            placeholder="Replace with"
+            value={replaceText}
+            onChange={(e) => setReplaceText(e.target.value)}
+            style={{ backgroundColor: props.mode === 'dark' ? 'grey' : 'white', color: props.mode === 'dark' ? 'white' : 'black' }}
+          />
+          <button className="btn btn-secondary mx-2" onClick={handleReplace}>Replace Text</button>
+        </div>
+      </div>
 
-       {/* <button className="btn btn-success mx-2"  onClick={handlemodeClick} >Dark Mode</button> */}
-    </div>
- 
-    <div className="container my-3" style={{color:props.mode==='dark'?'white':'black'}}>
+      <div className="container my-3" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
         <h2>Your text summary</h2>
-        <p>
-            {text.split(" ").length} words and {text.length} characters.
-        </p>
-        <p>{0.008 * text.split(" ").length} Minutes read</p>
+        <p>{text.split(/\s+/).filter((element) => element.length !== 0).length} words and {text.length} characters.</p>
+        <p>{0.008 * text.split(/\s+/).filter((element) => element.length !== 0).length} Minutes read</p>
         <h2>Preview</h2>
-        <p>{text.length>0?text:"Enter something in above textbox to preview it here"}</p>
-    </div>
-
+        <p>{text.length > 0 ? text : 'Enter something in the above textbox to preview it here'}</p>
+      </div>
     </>
-    
-  )
+  );
 }

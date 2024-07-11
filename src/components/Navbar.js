@@ -9,7 +9,6 @@ export default function Navbar(props) {
   const toggleMode1 = () => {
     setIsDarkMode(!isDarkMode);
     console.log('Toggle clicked');
-    // Update the text based on the mode
     setToggleText(isDarkMode ? 'Enable Light Mode' : 'Enable Dark Mode');
   };
 
@@ -35,6 +34,15 @@ export default function Navbar(props) {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/about">{props.abouttext}</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/features">Features</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/blog">Blog</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact">Contact Us</Link>
             </li>
           </ul>
           <form className="d-flex">

@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 } */
+
+
+/* App.css */
+/* App.css */
+.bgImage {
+  position: relative;
+  min-height: 100vh;
+}
+
+.bgImage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('D:\textutils\public\2148175822.jpg'); /* Adjust the path to your background image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(2px); /* Adjust the blur radius as needed */
+  z-index: -1;
+}
+/* .btnCustom{
+ background-color: #474741;
+} */
+
+/* Textform.css or App.css */
+/* Textform.css (or App.css if Textform.css doesn't exist) */
+
