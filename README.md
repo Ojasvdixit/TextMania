@@ -1,3 +1,6 @@
+TextUtils application is a React component designed to provide various text manipulation features to the user. It allows users to input text and perform several operations on it .
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
