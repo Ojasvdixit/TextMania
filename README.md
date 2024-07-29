@@ -1,5 +1,8 @@
 TextUtils application is a React component designed to provide various text manipulation features to the user. It allows users to input text and perform several operations on it .
 
+It is deployed on Vercel.
+Link to this -> https://text-utils-pied-nine.vercel.app/
+
 
 # Getting Started with Create React App
 
