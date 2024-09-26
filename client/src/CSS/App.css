@@ -1,0 +1,87 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+
+/* App.css */
+/* App.css */
+
+.bgImage {
+  position: relative;
+  min-height: 100vh;
+}
+
+.bgImage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('2148175822.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(2px); /* Adjust the blur radius as needed */
+  z-index: -1;
+}
+/* .btnCustom{
+ background-color: #5faed3;
+} */
+
+/* Textform.css or App.css */
+/* Textform.css (or App.css if Textform.css doesn't exist) */
+
+
+.suggestion {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.suggestion p {
+  margin: 0;
+  padding: 5px;
+}
+
+/* Make the navbar sticky */
+/* Make the navbar sticky and slightly transparent */
+/* Make the navbar sticky and more transparent */
+
