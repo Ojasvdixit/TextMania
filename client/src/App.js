@@ -50,7 +50,7 @@ function App() {
        />
         <Alert alert={alert} />
         <div className="bgImage">
-        <div className=" container " >
+        <div className=" container" >
               
               <Routes>
                 <Route exact path="/about" element={<About />} />

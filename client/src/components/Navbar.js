@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import '../CSS/Navbar.css';
 
 export default function Navbar(props) {
-  const [isDarkMode, setIsDarkMode] = useState(true);
-  const [toggleText, setToggleText] = useState('Enable Dark Mode');
-
-  const toggleMode1 = () => {
-    setIsDarkMode(!isDarkMode);
-    setToggleText(isDarkMode ? 'Enable Light Mode' : 'Enable Dark Mode');
-  };
+  
+  const toggleText = props.mode === 'light' ? 'Enable Dark Mode' : 'Enable Light Mode';
 
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
@@ -61,17 +56,13 @@ export default function Navbar(props) {
               type="checkbox"
               id="flexSwitchCheckDefault"
             />
-            <label
-              className={`form-check-label ${isDarkMode ? 'color-black' : ''}`}
-              onClick={toggleMode1}
-              htmlFor="flexSwitchCheckDefault"
-            >
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
               {toggleText}
             </label>
           </div>
           
           <Link to="/register" className="btn btn-primary mx-2">Sign Up</Link>
-           <Link to="/login" className="btn btn-secondary ">Sign In</Link>
+          <Link to="/login" className="btn btn-secondary">Sign In</Link>
         </div>
       </div>
     </nav>
