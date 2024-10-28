@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import {useNavigate} from 'react-router-dom';
 
 import Alert from "./Alert";
-const  URL = "http://localhost:5000/api/auth/register";
+const  URL = "https://textmania-mzuj.onrender.com";
 
 export default function Register(props) {
   const [user, setUser] = useState({
